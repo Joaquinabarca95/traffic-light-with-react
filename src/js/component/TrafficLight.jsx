@@ -1,24 +1,27 @@
 import React, { useState } from "react";
-import Light, { colors } from "./Light.jsx";
 
 const TrafficLight = () => {
-	const [selected, setSelected] = useState(false);
-
-	function handleClick(e) {
-		setSelected(!selected);
-		selected === true ? e.target.classList.toggle("selected") : "";
-	}
-	if (document.querySelectorAll(".selected").length > 1) {
-		document.querySelector(".selected").classList.toggle("selected");
-	}
+	const [color, setColor] = useState("");
 
 	return (
 		<>
 			<div className="traffictop"></div>
 			<div className="container">
-				<Light className={colors[0] + " light"} onClick={handleClick} />
-				<Light className={colors[1] + " light"} onClick={handleClick} />
-				<Light className={colors[2] + " light"} onClick={handleClick} />
+				<div
+					onClick={() => setColor("red")}
+					className={
+						"red light" + (color === "red" ? " selected" : "")
+					}></div>
+				<div
+					onClick={() => setColor("yellow")}
+					className={
+						"yellow light" + (color === "yellow" ? " selected" : "")
+					}></div>
+				<div
+					onClick={() => setColor("green")}
+					className={
+						"green light" + (color === "green" ? " selected" : "")
+					}></div>
 			</div>
 		</>
 	);
